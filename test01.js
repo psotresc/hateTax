@@ -14,11 +14,13 @@ const language = require('@google-cloud/language');
 const client = new language.LanguageServiceClient();
 const {Storage} = require('@google-cloud/storage');
 
-const EventEmitter = require('events')
+const EventEmitter = require('events');
+const { text } = require('body-parser');
 
 // VARIABLES ------------ 
-var perfil = 'UnPincheEwok'
+var perfil = 'walamagna'
 var video = 'BpobjOFkt8E'
+var descuento = 25;
 
 consultarTwitter(perfil)
 // consultarYoutube(video)
@@ -55,14 +57,14 @@ function consultarTwitter(perfil){
 
 function consultarYoutube(video){
     let liga = `https://youtube.googleapis.com/youtube/v3/commentThreads?textFormat=plainText&part=snippet&videoId=${video}&maxResults=10&${process.env.twitterKey}` 
-    console.log(liga);
-    // fetch(liga)
-    //     .then((res) => res.json())
-    //     .then(output => {
-    //         const data = output;
-    //         var resultado = data.items[1].snippet.topLevelComment.snippet.textDisplay
-    //         consultarDatos(resultado)
-    //     })
+    // console.log(liga);
+    fetch(liga)
+        .then((res) => res.json())
+        .then(output => {
+            const data = output;
+            var resultado = data.items[1].snippet.topLevelComment.snippet.textDisplay
+            consultarDatos(resultado)
+        })
 
 }
 
@@ -140,12 +142,15 @@ async function analyzeSentimentOfText(text) {
       console.log(`  Score: ${sentence.sentiment.score}`);
       console.log(`  Magnitude: ${sentence.sentiment.magnitude}`);
     });
-  
+
+    var resultado = Math.round(sentiment.score + sentiment.magnitude * (descuento/2)) 
+    console.log(`El resultado es:${resultado}`)
+    return resultado
     // [END language_sentiment_text]
   }
 //CONEXIONES *****************************************************************************
 router.get('/',function(req,res){
-    res.send(cambio = true);
+    res.send('<h1>Test</h1>');
 });
 
 var getData = function() {
@@ -163,42 +168,21 @@ router.post('/youtube',function(req,res){
 
 app.listen(port);
 console.log('Servidor escuchando en :' + port);
+// app.set('view engine', 'ejs');
 
-
-
-// app.get('/',(req,res) => {
-//     res.send(console.log('Hello World'))
+// app.get('/', function(req,res){
+//     res.render("index");
 // })
 
-// app.get('/youtube',(req,res) => {
-//     res.send(console.log('Hello World'))
+// app.post('/youtube', function(req,resp){
+//     console.log()
+//     resp.render('youtube')
 // })
 
-// app.get('/youtube',(req,res) => {
-//     res.send(console.log('Hello World'))
+// app.post('/youtube', function(req,resp){
+//     console.log()
+//     resp.render('youtube')
 // })
-
-// app.post("/", function(req, res){
-
-//     const itemName = req.body.newItem;
-//     const listName = req.body.list;
-  
-//     const item = new Item({
-//       name: itemName
-//     });
-  
-//     if (listName === "Today"){
-//       item.save();
-//       res.redirect("/");
-//     } else {
-//       List.findOne({name: listName}, function(err, foundList){
-//         foundList.items.push(item);
-//         foundList.save();
-//         res.redirect("/" + listName);
-//       });
-//     }
-//   });
-
-// app.listen(5000, ()=>{
-//      console.log('App escuchando en puerto 5000');
-//  })
+// app.listen(port, function(){
+//     console.log(`Escuchando en puerto ${port}`);
+// })

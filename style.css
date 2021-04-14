@@ -67,6 +67,67 @@ p{
     height: 30vh;
 }
 
+.caja2{
+    display: flex;
+    flex-direction: column;
+    background-color: #B36BF3;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 0 2rem; 
+    margin: 0 1rem;
+    /* height: 30vh; */
+}
+
+.calificacion{
+    border-radius: 100px;
+    background-color: red;
+    width:10rem;
+    height:10rem;
+    display: flex;
+    /* text-align: center; */
+    align-items: center;
+    justify-content: center;
+    font-size: 8rem;
+    margin: 0;
+    padding: 1rem;
+}
+
+.descuento{
+    font-size: 5rem;
+    color: white;
+    margin: 0;
+}
+
+.codigo{
+    font-size: 2rem;
+    color: white;
+    margin: 0;
+}
+
+.producto>p {
+    color: black;
+    /* margin: 0; */
+    margin: 0 0 1rem 0;
+}
+
+.producto>h2 {
+    color: black;
+    margin: 0;
+    
+}
+
 .logos{
     height: 50px;
+}
+
+.productos{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;  
+    padding: 2rem;
+}
+
+.productos>a{
+    text-decoration: none;
 }

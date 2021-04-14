@@ -1,0 +1,85 @@
+var randomTime = Math.random() * 5000 + 500;
+
+console.log("Time : " +randomTime)
+
+setTimeout(function(){ 
+
+	 try {
+	 	console.log("buscando input");
+		var x = document.getElementsByClassName("mcq");
+
+		var inputs = x[0].getElementsByTagName('input')
+
+		var element = Math.floor((Math.random() * inputs.length) + 1);
+
+		console.log(inputs.length-1);
+
+		//inputs[element-1].click();
+
+	  //inputs[0].click();
+
+		inputs[1].click();
+
+	    //inputs[inputs.length-1].click();
+
+
+		console.log("haciendo button-submit");
+		 document.getElementById("assessment-response-submit").click();
+	}
+	catch(err) {
+	    console.log("no se encontro input");
+
+		console.log("buscando submit general");
+		try{
+			document.getElementsByClassName("button-submit")[0].click();
+			console.log("haciendo click");
+		}catch(err) {
+	 		console.log("no se encontro submit general");
+		}
+	}
+
+	var feedback = document.getElementsByClassName("assmntreport__section")[0];
+
+	console.log(feedback);
+
+	if (feedback != null ) {
+
+		try{
+
+			feedback.getElementsByClassName("btn--primary")[0].click();
+		
+		}catch(e){
+
+			var feedback2 = document.getElementsByClassName("assmntreport__section")[1];  
+			console.log(feedback2);
+
+			if (feedback2 != null ) {
+				feedback2.getElementsByClassName("btn--primary")[0].click();
+			}
+
+
+		}
+
+	}
+
+
+	var inicio = document.getElementsByClassName("cards__summary--legacy")[0];
+
+	if (inicio != null ) {
+
+		inicio.getElementsByTagName('a')[0].click();
+
+	}
+
+}, randomTime);
+
+
+
+
+
+
+
+
+
+
+

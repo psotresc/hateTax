@@ -1,0 +1,1 @@
+curl 'https://translate.google.com/translate_tts?ie=UTF-8&q=HAqu%C3%AD%20tienes&tl=es-MX&client=tw-ob&pitch=1' -H 'Referer: http://translate.google.com/' -H 'User-Agent: stagefright/1.2 (Linux;Android 5.0)' > Hola.mp3

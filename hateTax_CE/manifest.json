@@ -1,0 +1,35 @@
+{
+  "manifest_version": 2,
+
+  "name": "Hate Tax",
+  "description": "Recompensa la amabilidad y castiga el odio a través del cambio de precios en mercado libre",
+  "version": "1",
+ "content_scripts": [
+  {
+    "matches": ["https://www.mercadolibre.com.mx/*"],
+    "js": ["app.js"],
+    "run_at": "document_end"
+  }
+],
+ "icons": { "16": "icon16.png",
+           "48": "icon48.png",
+          "128": "icon128.png"
+  },
+ "browser_action": {
+    "default_icon": {
+      "18": "icon16.png",
+      "48": "icon48.png"
+    },
+    "default_title": "Recompemnsa la amabilidad y castiga el odio",
+    "default_popup": "popup.html"
+  },
+  "background": {
+    "scripts": ["background.js"]
+  },
+"permissions": [
+          "storage"
+        ],
+"web_accessible_resources": [
+  "icon48.png","loader.svg", "cutter2.0.png"
+]
+}

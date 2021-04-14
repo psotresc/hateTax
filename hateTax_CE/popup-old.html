@@ -1,0 +1,143 @@
+<html>
+ <head>
+  <title>Blank New Tab</title>
+  <style>
+  div {
+    color: #cccccc;
+    text-align: center;
+    font-family: "Segoe UI","Lucida Grande",Tahoma,sans-serif;
+  }
+  *{
+
+    margin:0 auto;
+    padding: 0 auto;
+  }
+  #options{
+
+    width:300px;
+    border-style:solid;
+    border-color:#000000;
+    border-width: thin;
+
+  }
+  #header{
+    display: block; 
+    margin: 0; 
+    background: white; 
+    top: 0; 
+    z-index: 999999999999; 
+    font-weight: bold; 
+    padding: 5px;
+    font-size:18px;   
+    background-color:rgb(64, 64, 64);
+  }
+  #info{
+    font-size:10px;
+    background-color: rgb(128, 128, 128);
+    padding:5px;
+    display: block; 
+  }
+
+  #beta{
+
+    font-size:8px;
+    background-color: rgb(155, 155, 155);
+    padding:5px;
+    display: block; 
+    margin-bottom:5px;
+
+
+  }
+  #controls{
+
+    background: #ffffff;
+    -webkit-box-shadow: 1px 2px 5px 0px rgba(200,200,200,1);
+    padding: 0 0 0 0;
+    width:250px;
+    margin-bottom:10px;
+  }
+  .option{
+    border-top: 1px solid #dddddd;
+    padding: 20px;
+    position: relative;
+    cursor: pointer;
+    font-size:12px;
+    color:#000000;
+
+  }
+  #footer{
+    background-color:rgb(64, 64, 64);
+    font-size:8px;
+    display: block; 
+    padding:5px;    
+
+    
+
+  }
+  button{
+
+    cursor: pointer;
+    font-size:12px;
+    color:#000000;
+    text-align: center;
+    font-family: "Segoe UI","Lucida Grande",Tahoma,sans-serif; 
+    width:150px;   
+
+  }
+  .automatic, button:disabled,
+  button[disabled]{
+      background-color: #2a60dc;
+      color:white;
+      border: 1px solid #999999;
+  }
+
+
+
+  </style>
+  <script type="text/javascript" src="popup.js"></script>
+ </head>
+ <body >
+  <!--<img src="giphy.gif" />-->
+  <div id="options">
+    <span id="header"><img src="icon48.png" width="10%" />  BELT CUTTER </span>
+    <span id="info">This extension is only for experimentation purposes.</span>
+    <span id="beta">BETA 0.03</span>
+    <div id="controls">
+      <form id="switcher">
+      <div id="on-container" class="on option">
+          <input id="radioOn" type="radio" name="mode" value="on" id="on">
+          <label for="on">On</label>
+          <span>Enable Extension</span>
+      </div>
+      <div id="on-container" class="off option">
+          <input id="radioOff" type="radio" name="mode"  value="off" id="off">
+          <label for="on">Off</label>
+          <span>Disable Extension</span>
+      </div> 
+    </form>
+      <div id="on-container" class="off option">
+          <button type="button" value="0" id="automatic"> Automatic mode</button>
+          <span></span>
+      </div>        
+      <div id="on-container" class="off option">
+          <button type="button" value="1"  id="mode1">Active mode 1</button>
+          <span></span>
+      </div>               
+      <div id="on-container" class="off option">
+          <button type="button" value="2"  id="mode2">Active mode 2</button>
+          <span></span>
+      </div>    
+      <div id="on-container" class="off option">
+          <button type="button" value="3" id="mode3">Active mode 3</button>
+          <span></span>
+      </div> 
+      <div id="on-container" class="off option">
+          <button type="button" value="4" id="mode4">Active mode 4</button>
+          <span></span>
+      </div>                       
+    </div>
+    <span id="footer">Will a Robot Take my Job?</span>
+  </div>
+  <script src="popup.js"></script>  
+ </body>
+</html>

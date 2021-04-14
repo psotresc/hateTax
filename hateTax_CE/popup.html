@@ -6,7 +6,6 @@
     color: #cccccc;
     text-align: center;
     font-family: "Segoe UI","Lucida Grande",Tahoma,sans-serif;
-    background:black;
   }
   *{
 
@@ -73,8 +72,23 @@
     padding:5px;    
 
     
-
   }
+
+  .popupCool{
+    display: flex;
+    flex-direction: column;
+    justify-content: center; 
+    align-items: center; 
+    width: 300px;
+  } 
+
+  .botonCool{
+    text-decoration: none;
+    padding: 1rem;
+    color: white;
+    background-color: #B36BF3;
+  }
+
   button{
 
     cursor: pointer;
@@ -92,16 +106,46 @@
       border: 1px solid #999999;
   }
 
+  #resultado{
+    background-color: red;
+    border-radius: 250px ;
+    width: 5rem;
+    height: 5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+  }
 
+  .logos{
+    width: 150px;
+    margin-right: 1rem;
+  }
 
+  .inicio{
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row;
+    margin: 1rem;
+
+  }
   </style>
-  <script type="text/javascript" src="popup.js"></script>
+  <script type="text/javascript"  defer src="popup.js"></script>
+  <script type="text/javascript"  defer src="popup.js"></script>
  </head>
  <body >
   <!--<img src="giphy.gif" />-->
-  <div id="options">
-    
+  <div class="popupCool">
+    <div class="inicio">
+      <img src="https://www.aspel.com.mx/assets/aspelcom/images/alianzas/logo_mercadolibre.png" class= logos alt="logotipo Mercado Libre">
+      <h1>Hate Tax</h1> 
+    </div>
+
+    <br>
+  <a href="" class="botonCool"> Calcular precios</a>
   </div>
+  <div id="resultado">descuento</div>
+  
   <script src="popup.js"></script>  
  </body>
 </html>

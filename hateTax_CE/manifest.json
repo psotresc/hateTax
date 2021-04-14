@@ -3,11 +3,12 @@
 
   "name": "Hate Tax",
   "description": "Recompensa la amabilidad y castiga el odio a través del cambio de precios en mercado libre",
-  "version": "1",
+  "version": "0.1.0",
  "content_scripts": [
   {
-    "matches": ["https://www.mercadolibre.com.mx/*"],
+    "matches": ["<all_urls>"],
     "js": ["app.js"],
+    "css":["styles.css"],
     "run_at": "document_end"
   }
 ],

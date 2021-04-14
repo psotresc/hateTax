@@ -1,0 +1,72 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Roboto:wght@400;700&display=swap');
+
+h1, h2{
+    font-family: 'Roboto', serif;
+    font-weight: 800;
+}
+
+h2{
+    color: white;
+}
+body{
+    margin: 0;
+    padding: 0;
+    background-color: #EBEBEB;
+    
+}
+
+p{
+    font-family: 'Roboto', sans-serif;
+    color: white;
+}
+
+.inicio{
+    background-color: #FFF159 ;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.bienvenida{
+    margin: 2rem;
+    padding: 0 2rem;
+    display: flex;
+    /* height: 10vh; */
+    top: 0px;
+    flex-direction: column;
+    text-align: center;
+    /* justify-content: center; */
+    background-color: white;
+    border-radius: 1px solid 25px round;
+}
+
+.bienvenida p{
+    color: #403333;
+    text-align: center;
+}
+
+
+.contenedor{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+}
+
+.caja{
+    display: flex;
+    flex-direction: column;
+    background-color: #B36BF3;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 2rem; 
+    margin: 1rem;
+    height: 30vh;
+}
+
+.logos{
+    height: 50px;
+}

@@ -4,14 +4,30 @@ const fetch = require('node-fetch')
 require('dotenv/config')
 var Twitter = require('twitter');
 
-var perfil = 'ChumelTorres'
+const express = require("express");
+const app = express();
+const router = express.Router();
+var port = process.env.PORT || 8080;
+var ejs = require('ejs');
+
+const language = require('@google-cloud/language');
+const client = new language.LanguageServiceClient();
+const {Storage} = require('@google-cloud/storage');
+
+const EventEmitter = require('events')
+
+// VARIABLES ------------ 
+var perfil = 'UnPincheEwok'
 var video = 'BpobjOFkt8E'
 
-// consultarTwitter(perfil)
-consultarYoutube(video)
+consultarTwitter(perfil)
+// consultarYoutube(video)
+
+
 //  TWITTER *****************************************************************************
 
 function consultarTwitter(perfil){
+    var arrTweets = []
     var client = new Twitter({
         consumer_key: process.env.apiKey,
         consumer_secret: process.env.apiSecretKey,
@@ -22,7 +38,11 @@ function consultarTwitter(perfil){
     var params = {screen_name: perfil};
     client.get('statuses/user_timeline', params, function(error, tweets, response) {
         if (!error) {
-            consultarDatos(tweets[2].text)
+            // consultarDatos(tweets[5].text)
+            for (let i=0; i<10; i++){
+                arrTweets.push(tweets[i].text)
+            }
+            analyzeSentimentOfText(arrTweets)
         }
     });
 }
@@ -46,11 +66,11 @@ function consultarYoutube(video){
 
 }
 
-// ANALISIS ***************************************************************************
-function consultarDatos(data){
+// ANALISISx ***************************************************************************
+// function consultarDatos(data){
         
-        var sentimiento = sentiment(data, 'es')
-        console.log(sentimiento)
+//         var sentimiento = sentiment(data, 'es')
+//         console.log(sentimiento)
 
         // console.log(data);
         // console.log()
@@ -63,4 +83,122 @@ function consultarDatos(data){
         // });
         // comment.save();
         // console.log('Se guardaron datos');
+// }
+// Instantiates a client. If you don't specify credentials when constructing
+// the client, the client library will look for credentials in the
+// environment.
+
+// ANALISIS GOOGLE **********************************************************
+const storage = new Storage();
+// Makes an authenticated API request.
+async function listBuckets() {
+  try {
+    const results = await storage.getBuckets();
+
+    const [buckets] = results;
+
+    console.log('Buckets:');
+    buckets.forEach(bucket => {
+      console.log(bucket.name);
+    });
+  } catch (err) {
+    console.error('ERROR:', err);
+  }
 }
+listBuckets();
+
+async function analyzeSentimentOfText(text) {
+    // [START language_sentiment_text]
+    // Imports the Google Cloud client library
+    const language = require('@google-cloud/language');
+  
+    // Creates a client
+    const client = new language.LanguageServiceClient();
+  
+    /**
+     * TODO(developer): Uncomment the following line to run this code.
+     */
+    // const text = 'Your text to analyze, e.g. Hello, world!';
+  
+    // Prepares a document, representing the provided text
+    const document = {
+      content: text,
+      type: 'PLAIN_TEXT',
+    };
+  
+    // Detects the sentiment of the document
+    const [result] = await client.analyzeSentiment({document});
+  
+    const sentiment = result.documentSentiment;
+    console.log('Document sentiment:');
+    console.log(`  Score: ${sentiment.score}`);
+    console.log(`  Magnitude: ${sentiment.magnitude}`);
+  
+    const sentences = result.sentences;
+    sentences.forEach(sentence => {
+      console.log(`Sentence: ${sentence.text.content}`);
+      console.log(`  Score: ${sentence.sentiment.score}`);
+      console.log(`  Magnitude: ${sentence.sentiment.magnitude}`);
+    });
+  
+    // [END language_sentiment_text]
+  }
+//CONEXIONES *****************************************************************************
+router.get('/',function(req,res){
+    res.send(cambio = true);
+});
+
+var getData = function() {
+    return Math.random().toString();
+}
+
+app.get('/ajax', function(req, res) {
+    res.send(getData());
+});
+
+router.post('/youtube',function(req,res){
+    var id = req.body.videoYoutube
+    res.redirect('/youtube.html')
+});
+
+app.listen(port);
+console.log('Servidor escuchando en :' + port);
+
+
+
+// app.get('/',(req,res) => {
+//     res.send(console.log('Hello World'))
+// })
+
+// app.get('/youtube',(req,res) => {
+//     res.send(console.log('Hello World'))
+// })
+
+// app.get('/youtube',(req,res) => {
+//     res.send(console.log('Hello World'))
+// })
+
+// app.post("/", function(req, res){
+
+//     const itemName = req.body.newItem;
+//     const listName = req.body.list;
+  
+//     const item = new Item({
+//       name: itemName
+//     });
+  
+//     if (listName === "Today"){
+//       item.save();
+//       res.redirect("/");
+//     } else {
+//       List.findOne({name: listName}, function(err, foundList){
+//         foundList.items.push(item);
+//         foundList.save();
+//         res.redirect("/" + listName);
+//       });
+//     }
+//   });
+
+// app.listen(5000, ()=>{
+//      console.log('App escuchando en puerto 5000');
+//  })

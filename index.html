@@ -5,8 +5,40 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Economía del odio</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="app.js"></script>
 </head>
 <body>
-    
+    <div class="inicio">
+        <img src="https://www.aspel.com.mx/assets/aspelcom/images/alianzas/logo_mercadolibre.png" class= 'logos mercado' alt="logotipo Mercado Libre">
+        <h1>Hate Tax</h1>
+
+    </div>
+    <div class="bienvenida">
+        <p>Bienvenido a Hate Tax, la aplicación de Mercado Libre en donde castigamos el odio y premiamos el optimismo</p>
+    </div>
+    <div class="contenedor">
+        <div class="caja">
+            <img src="https://www.iconpacks.net/icons/2/free-twitter-logo-icon-2429-thumb.png" alt="logoTwitter" class="logos">
+            <h2>Twitter</h2>
+            <p>Coloca tu usuario de twitter para descubrir tu puntaje </p>  
+            <form action="/" method="post">
+                <input type='text' name="cuentaTwitter" placeholder="Nombre de Cuenta">
+                <button type="submit">Consultar</button>
+            </form>
+            <div id="'resTwitter"></div>
+        </div>
+
+        <div class="caja">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e1/Logo_of_YouTube_%282015-2017%29.svg/1200px-Logo_of_YouTube_%282015-2017%29.svg.png" alt="logo Youtube" class="logos">
+            <h2>Youtube</h2>  
+            <p>Coloca un video de Youtube para descubrir que tanto hate generas </p>   
+            <form action="/youtube" method="post">
+                <input input type='text' name="videoYoutube" placeholder="Link video youtube">
+                <button type="submit">Consultar</button>
+            </form>
+            <div id="'resYoutube"></div>
+        </div>
+    </div>
 </body>
 </html>
